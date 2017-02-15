@@ -1,0 +1,2 @@
+class GameParticipation < ApplicationRecord
+end
