@@ -1,0 +1,22 @@
+
+
+<section>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      
+        <h1>choose your opponent:</h1>
+
+        <%= form_tag '/games', method: :post do %>
+          
+          <div>
+            <%= label_tag :user %>
+            <%= collection_select :user, :user_id, User.all, :id, :name %>
+          </div>
+          
+
+          <%= submit_tag "begin battle", class: "btn btn-default" %>
+        <% end %>
+      
+    </div>
+  </div>
+</section>

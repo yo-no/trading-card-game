@@ -1,5 +1,17 @@
 class UsersController < ApplicationController
 
+  def index
+    if current_user
+      redirect_to "/users/#{current_user.id}"
+    else
+      redirect_to "/login"
+    end
+  end
+
+  def show
+    @user = current_user
+  end
+
   def new
     render 'new.html.erb'
   end
