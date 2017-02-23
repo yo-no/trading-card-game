@@ -31,5 +31,9 @@ class User < ApplicationRecord
     card.update(status: "in hand")
   end
 
+  def participation_with(game_object)
+    game_participations.where(game_id: game_object.id).first
+  end
+
 end
 
