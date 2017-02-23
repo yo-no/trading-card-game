@@ -4,8 +4,10 @@ class GameParticipation < ApplicationRecord
 
   def increase_mana
     mana_awarded = 1
-    self.mana = mana + mana_awarded
-    save
+    if self.mana < 10
+      self.mana = mana + mana_awarded
+      save
+    end
   end
 
   def decrease_hp(card_attack)

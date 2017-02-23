@@ -1,21 +1,3 @@
-<section>
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-    <%= form_tag "/games/#{@game.id}/dealdamage", method: :get do %>
-      <% @player_one.hand.each do |my_card| %>
-        <h3><%= my_card.card.name %></h3>
-        <h4>cost/attack: <%= my_card.card.attack %></h4>
-        <div class="radio">
-          <label><input type="radio" name="my_card_id" value="<%= my_card.id %>">attack!</label>
-        </div>
-      <% end %>
-
-      <p>*******************************************************************</p>
-      <h2>mana slots: <%= @mana_slots %></h2>
-      <h2>player two hp: <%= @player_two_hp %></h2>
-
-      <input type="submit" class="btn btn-info" value="Submit Button">
-    <% end %>
-    </div>
-   </div>
-</section> 
+<%= collection_check_boxes(:post, :my_card_ids, @player_one.hand, :id, :name) do |b|%> 
+  <%= b.label(:"data-value" => b.value) { b.check_box(class: "check_box") }  %>
+<% end %>

@@ -11,7 +11,11 @@ class Game < ApplicationRecord
   end
 
   def switch_players
-    
+    if current_player == 1
+      self.current_player = 2
+    else
+      self.current_player = 1
+    end
   end
 
 end

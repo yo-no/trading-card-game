@@ -10,4 +10,8 @@ class MyCard < ApplicationRecord
     card.attack
   end
 
+  def name
+    card.name
+  end
+
 end

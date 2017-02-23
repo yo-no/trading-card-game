@@ -46,12 +46,16 @@ class GamesController < ApplicationController
     if @mana_slots >= @my_card.attack 
       @player_two_participation.decrease_hp(@my_card.attack)
       @player_one_participation.increase_mana
+      @my_card.update(status: "graveyard")
       redirect_to "/games/#{@game.id}/attack"
+
     else
       flash[:warning] = "insufficient mana"
       render :attack
     end   
   end
+
+  #somewhere @player_one.draw_card
 
 private
 

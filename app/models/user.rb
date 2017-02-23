@@ -28,7 +28,9 @@ class User < ApplicationRecord
 
   def draw_card
     card = deck.sample
-    card.update(status: "in hand")
+    if card
+      card.update(status: "in hand")
+    end
   end
 
   def participation_with(game_object)
