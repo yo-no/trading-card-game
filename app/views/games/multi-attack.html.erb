@@ -1,0 +1,3 @@
+<%= collection_check_boxes(:post, :my_card_ids, @player_one.hand, :id, :name) do |b|%> 
+  <%= b.label(:"data-value" => b.value) { b.check_box(class: "check_box") }  %>
+<% end %>

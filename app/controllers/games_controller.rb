@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  before_action :set_attack_stats, only: [:attack, :deal_damage]
+  before_action :set_attack_stats, only: [:attack, :deal_damage, :end_turn, :victory]
 
   def new
 
@@ -38,14 +38,14 @@ class GamesController < ApplicationController
   end
 
   def attack
-
+    
   end
 
   def deal_damage
     @my_card = MyCard.find(params[:my_card_id])
     if @mana_slots >= @my_card.attack 
       @player_two_participation.decrease_hp(@my_card.attack)
-      @player_one_participation.increase_mana
+      @mana_slots -= @my_card.attack
       @my_card.update(status: "graveyard")
       redirect_to "/games/#{@game.id}/attack"
 
@@ -55,7 +55,22 @@ class GamesController < ApplicationController
     end   
   end
 
-  #somewhere @player_one.draw_card
+
+  def end_turn
+
+    if @player_two_hp <= 0
+      redirect_to "/games/#{@game.id}/victory"
+    else
+      @game.switch_players
+      @player_one.draw_card
+      @player_one_participation.increase_mana
+      redirect_to "/games/#{@game.id}/attack"
+    end
+
+  end
+
+  def victory
+  end
 
 private
 

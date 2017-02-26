@@ -15,8 +15,8 @@ class GameParticipation < ApplicationRecord
     save
   end
 
-  def current_player
-    
+  def mana_slots
+    @mana_slots = 0
   end
       
 end
