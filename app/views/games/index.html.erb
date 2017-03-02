@@ -1,0 +1,3 @@
+<% @games.each do |game| %>
+<h3><a href="/games/<%= game.id %>/attack">Game <%= game.id %> with <%= game.game_participations.where.not(user_id: @current_user.id).first.user.name %></a></h3>
+<% end %>

@@ -2,16 +2,21 @@ class GamesController < ApplicationController
 
   before_action :set_attack_stats, only: [:attack, :deal_damage, :end_turn, :victory]
 
+  def index
+    @games = current_user.games
+    @current_user = current_user
+  end
+
   def new
 
   end
 
   def create
     game = Game.create
-    @player_one = User.find(1)
-    @player_two = User.find(2)
+    @player_one = current_user
+    @player_two = User.find(params[:user][:user_id])
     @player_one_game = GameParticipation.create(
-                              user_id: 1,
+                              user_id: @player_one.id,
                               game_id: game.id,
                               hp: 30,
                               mana: 1,
@@ -19,7 +24,7 @@ class GamesController < ApplicationController
                               )
 
     @player_two_game = GameParticipation.create(
-                              user_id: 2,
+                              user_id: @player_two.id,
                               game_id: game.id,
                               hp: 30,
                               mana: 1,
@@ -38,17 +43,17 @@ class GamesController < ApplicationController
   end
 
   def attack
-    
+    @mana_slots = @player_one_mana
   end
 
   def deal_damage
     @my_card = MyCard.find(params[:my_card_id])
     if @mana_slots >= @my_card.attack 
       @player_two_participation.decrease_hp(@my_card.attack)
-      @mana_slots -= @my_card.attack
-      @my_card.update(status: "graveyard")
+      @mana_slots = @mana_slots - @my_card.attack
+      @my_card.discard
       redirect_to "/games/#{@game.id}/attack"
-
+      flash[:default] = @my_card.card.action_text
     else
       flash[:warning] = "insufficient mana"
       render :attack
@@ -70,6 +75,7 @@ class GamesController < ApplicationController
   end
 
   def victory
+    @game.destroy
   end
 
 private
@@ -82,7 +88,8 @@ private
     @player_two_participation = @player_two.participation_with(@game)
     @player_one_mana = @player_one_participation.mana
     @player_two_hp = @player_two_participation.hp
-    @mana_slots = @player_one_mana
+    
+     
   end
 
 end

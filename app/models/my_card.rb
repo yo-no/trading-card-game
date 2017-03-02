@@ -14,4 +14,8 @@ class MyCard < ApplicationRecord
     card.name
   end
 
+  def discard
+    update(status: "graveyard")
+  end
+
 end
