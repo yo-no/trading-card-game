@@ -14,9 +14,5 @@ class GameParticipation < ApplicationRecord
     self.hp = hp - card_attack
     save
   end
-
-  def mana_slots
-    @mana_slots = 0
-  end
       
 end

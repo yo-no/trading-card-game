@@ -37,5 +37,9 @@ class User < ApplicationRecord
     game_participations.where(game_id: game_object.id).first
   end
 
+  def mana_slots
+    game_participations.mana_slots
+  end
+
 end
 

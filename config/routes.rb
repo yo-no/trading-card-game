@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get '/mycards' => 'my_cards#index'
   get '/mycards/:id' => 'my_cards#show'
 
-  get '/games/' => 'games#index'
+  #for when multiple simulataneous games are supported
+  #get '/games/' => 'games#index'
   get '/games/new' => 'games#new'
   post '/games/' => 'games#create'
 

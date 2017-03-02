@@ -20,8 +20,9 @@
       <div class ="stats">
       <h1>your mana slots: <%= @mana_slots %></h1>
       <h1><%= @game.inactive_player.name %>'s hp: <%= @player_two_hp %></h1>
-
+      
       <input type="submit" class="btn btn-info" value="attack">
+      <!-- want to hide this based on whether anything is selected probably a js thing. -->
     <% end %>
     <%= form_tag "/games/#{@game.id}/endturn", method: :post do %>
     <input type="submit" class="btn btn-info" value="end turn">

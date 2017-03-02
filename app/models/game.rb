@@ -21,5 +21,16 @@ class Game < ApplicationRecord
   end
 
 
+  def restore_mana_slots
+    self.mana_slots = self.game_participations.find_by(order: current_player).mana
+    save
+  end
+
+  def spend_mana(card_cost)
+    self.mana_slots -= card_cost
+    save
+  end
+
+
 
 end
