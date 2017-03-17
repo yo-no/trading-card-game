@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   post '/games/:id/endturn' => 'games#end_turn'
   get '/games/:id/victory' => 'games#victory'
 
+  # get "/cards/" => "cards#index"
+  get "/cards/new" => "cards#new"
+  post "/cards" => "cards#create"
+  # get "/cards/attack" => "cards#attack"
+  get "cards/:id" => "cards#show"
+
 end

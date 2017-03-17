@@ -1,0 +1,40 @@
+<section>
+  <div class="row">
+    <div class="col-md-10 col-sm-offset-1">
+    <h1><%= @game.active_player.name %>'s turn</h1>
+    <div class="hand row"></div>
+    
+      <% @player_one.hand.each do |my_card| %>
+      <div class="card col-md-4">
+          <h2><%= my_card.card.name %></h2>
+          <h3><%= my_card.card.attack %></h3>  
+          <!-- <div class="checkbox">
+          <label><input type="checkbox" name="my_card_id" value="<#%= my_card.id %>" >attack!</label>
+          </div> -->
+      </div>
+      
+      <% end %>
+      <div class="col-sm-10">
+<%= form_tag "/games/#{@game.id}/dealdamage", method: :get do %>
+    <%= label_tag :my_cards %>
+    <%= select_tag :my_cards, options_from_collection_for_select(@player_one.hand, :id, :name, @player_one.hand.pluck(:id)), multiple: true %>
+      </div>
+
+      
+      <div class="col-sm-10">
+      <div class ="stats">
+      <h1>your mana slots: <%= @mana_slots %></h1>
+      <h1><%= @game.inactive_player.name %>'s hp: <%= @player_two_hp %></h1>
+      
+      <input type="submit" class="btn btn-info" value="attack">
+      <!-- want to hide this based on whether anything is selected probably a js thing. -->
+<% end %>
+    <%= form_tag "/games/#{@game.id}/endturn", method: :post do %>
+    <input type="submit" class="btn btn-info" value="end turn">
+    <% end %>
+      </div>
+      </div>
+    </div>
+   </div>
+   
+</section> 

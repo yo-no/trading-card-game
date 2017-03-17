@@ -166,3 +166,115 @@
 #                 deck: true
 #                 )
 # end
+
+2.times do
+  MyCard.create(
+                user_id: 3,
+                card_id: 21,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 3,
+                card_id: 22,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 3,
+                card_id: 26,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 3,
+                card_id: 27,
+                deck: true
+                )
+end
+
+3.times do
+  MyCard.create(
+                user_id: 3,
+                card_id: 23,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 3,
+                card_id: 25,
+                deck: true
+                )
+end
+
+4.times do
+  MyCard.create(
+                user_id: 3,
+                card_id: 24,
+                deck: true
+                )
+end
+
+MyCard.create(
+                user_id: 3,
+                card_id: 28,
+                deck: true
+                )
+MyCard.create(
+                user_id: 3,
+                card_id: 29,
+                deck: true
+                )
+
+##############################
+2.times do
+  MyCard.create(
+                user_id: 4,
+                card_id: 21,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 4,
+                card_id: 22,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 4,
+                card_id: 26,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 4,
+                card_id: 27,
+                deck: true
+                )
+end
+
+3.times do
+  MyCard.create(
+                user_id: 4,
+                card_id: 24,
+                deck: true
+                )
+  MyCard.create(
+                user_id: 4,
+                card_id: 25,
+                deck: true
+                )
+end
+
+4.times do
+  MyCard.create(
+                user_id: 4,
+                card_id: 24,
+                deck: true
+                )
+end
+
+MyCard.create(
+                user_id: 4,
+                card_id: 28,
+                deck: true
+                )
+MyCard.create(
+                user_id: 4,
+                card_id: 29,
+                deck: true
+                )
+  

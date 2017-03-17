@@ -34,8 +34,11 @@ class GamesController < ApplicationController
     @player_one.initialize_deck
     @player_two.initialize_deck
 
-    3.times do
+    2.times do
       @player_one.draw_card
+    end
+
+    3.times do
       @player_two.draw_card
     end
 
@@ -47,17 +50,29 @@ class GamesController < ApplicationController
   end
 
   def deal_damage
-    @my_card = MyCard.find(params[:my_card_id])
-    if @mana_slots >= @my_card.attack 
-      @player_two_participation.decrease_hp(@my_card.attack)
-      @game.spend_mana(@my_card.cost)
-      @my_card.discard
+    my_card_ids = params[:my_cards]
+    damage_total = 0
+    mana_cost = 0
+    
+      my_card_ids.each do |my_card_id|
+        my_card = MyCard.find(my_card_id)
+        damage_total += my_card.attack
+        mana_cost += my_card.cost
+      end
+
+    if @mana_slots >= mana_cost 
+      @player_two_participation.decrease_hp(damage_total)
+      @game.spend_mana(mana_cost)
+      my_card_ids.each do |my_card_id|
+        my_card = MyCard.find(my_card_id)
+        my_card.discard
+      end
       redirect_to "/games/#{@game.id}/attack"
-      flash[:default] = @my_card.card.action_text
+      #flash[:default] = @my_card.card.action_text
     else
       flash[:warning] = "insufficient mana"
       render :attack
-    end   
+    end      
   end
 
 
@@ -89,6 +104,7 @@ private
     @player_one_mana = @player_one_participation.mana
     @player_two_hp = @player_two_participation.hp
     @mana_slots = @game.mana_slots 
+    @cardback = Card.find_by(name: "back")
   end
 
 end

@@ -1,35 +1,53 @@
-<section>
-  <div class="row">
-    <div class="col-md-10 col-sm-offset-1">
-    <h1><%= @game.active_player.name %>'s turn</h1>
-    <div class="hand row"></div>
-    <%= form_tag "/games/#{@game.id}/dealdamage", method: :get do %>
-      <% @player_one.hand.each do |my_card| %>
-      <div class="card col-md-4">
-          <h2><%= my_card.card.name %></h2>
-          <h3><%= my_card.card.attack %></h3>  
-          <div class="checkbox">
-          <label><input type="checkbox" name="my_card_id" value="<%= my_card.id %>" >attack!</label>
-      </div>
-      </div>
-      
-      <% end %>
-
-      
-      <div class="col-sm-10">
-      <div class ="stats">
-      <h1>your mana slots: <%= @mana_slots %></h1>
-      <h1><%= @game.inactive_player.name %>'s hp: <%= @player_two_hp %></h1>
-      
-      <input type="submit" class="btn btn-info" value="attack">
-      <!-- want to hide this based on whether anything is selected probably a js thing. -->
-    <% end %>
-    <%= form_tag "/games/#{@game.id}/endturn", method: :post do %>
-    <input type="submit" class="btn btn-info" value="end turn">
-    <% end %>
-      </div>
+<div class="container">
+    <div class="row text-center col-lg-9">
+      <%= image_tag("opponenthand.gif", class: "animated infinite bounce", style: "height: 300px")%>
+    </div>
+    <div class="col-md-3">
+      <div class="opponent-avatar ">
+        <%= image_tag @player_two.avatar.url(:medium) %>
+        <h3><%= @game.inactive_player.name %></h3>
+        <h3>Health: <%= @player_two_hp %></h3>
       </div>
     </div>
-   </div>
-   
-</section> 
+</div>
+<div class="col-sm-12">
+  <br>
+</div>
+<div class="container player">
+      <div class="col-md-3">
+      <div >
+      <%= image_tag @player_one.avatar.url(:medium), class: "player-avatar" %>
+      </div>
+      <h3><%= @game.active_player.name %></h3>
+      <h3>hp:<%#= @player_one.hp %> Mana: <%= @mana_slots %></h3>
+      </div>
+    <div class="row text-center col-lg-9">
+
+      <% @player_one.hand.each do |my_card| %>
+        <div class="card"> 
+          <div class="front"> 
+            <%= image_tag @cardback.image.url(:medium) %>
+          </div> 
+          <div class="back">
+            <%= image_tag my_card.card.image.url(:medium) %>
+          </div>  
+        </div>
+       <% end %>
+    </div>
+</div>
+
+
+
+
+<script>
+$(".card").flip({
+  axis: 'y',
+  trigger: 'click'
+});
+
+$(this).on('click', function() {
+  $(this).addClass('animated shake').one('webkitAnimationEnd', function() {
+    $(this).removeClass('animated shake');
+  });
+});
+</script>

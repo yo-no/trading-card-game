@@ -13,24 +13,29 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
     render 'new.html.erb'
   end
 
   def create
-    user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password],
-      password_confirmation: params[:password_confirmation]
-    )
-    if user.save
-      session[:user_id] = user.id
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
       flash[:success] = 'Successfully created account!'
-      redirect_to '/'
+      redirect_to "/users/#{session[:user_id]}"
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/signup'
     end
+  end
+
+  private
+
+  # Use strong_parameters for attribute whitelisting
+  # Be sure to update your create() and update() controller methods.
+
+  def user_params
+    params.require(:user).permit(:avatar, :name, :email, :password, :password_confirmation)
   end
 
 end

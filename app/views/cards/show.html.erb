@@ -1,0 +1,8 @@
+<%= image_tag @card.image.url(:small) %>
+<%= image_tag @card.image.url(:medium) %>
+<%= image_tag @card.image.url(:large) %>
+
+<h1><%= @card.name  %></h1>
+<h2><%= @card.attack %></h2>
+<h4><%= @card.description %></h4>
+<h4><%= @card.action_text %></h4>
