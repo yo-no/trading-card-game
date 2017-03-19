@@ -46,10 +46,10 @@ class GamesController < ApplicationController
   end
 
   def attack
-
   end
 
   def deal_damage
+    
     my_card_ids = params[:my_cards]
     damage_total = 0
     mana_cost = 0
@@ -60,7 +60,7 @@ class GamesController < ApplicationController
         mana_cost += my_card.cost
       end
 
-    if @mana_slots >= mana_cost 
+    if @mana_slots >= mana_cost
       @player_two_participation.decrease_hp(damage_total)
       @game.spend_mana(mana_cost)
       my_card_ids.each do |my_card_id|
@@ -84,13 +84,14 @@ class GamesController < ApplicationController
       @game.restore_mana_slots
       @player_one.draw_card
       @player_one_participation.increase_mana
-      redirect_to "/games/#{@game.id}/attack"
+      ActionCable.server.broadcast 'game_channel', action: "refresh"
+      #redirect_to "/games/#{@game.id}/attack"
     end
 
   end
 
   def victory
-    @game.destroy
+    
   end
 
 private

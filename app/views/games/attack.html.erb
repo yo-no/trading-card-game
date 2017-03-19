@@ -5,8 +5,9 @@
     <div class="col-md-3">
       <div class="opponent-avatar ">
         <%= image_tag @opponent.avatar.url(:medium) %>
-        <h3><%= @game.inactive_player.name %></h3>
-        <h3>Health: <%= @opponent.participation_with(@game).hp %></h3>
+
+        <h3><%= @opponent.name %></h3>
+        <h3>health: <%= @opponent.participation_with(@game).hp %></h3>
       </div>
     </div>
 </div>
@@ -18,9 +19,12 @@
       <div>
       <%= image_tag current_user.avatar.url(:medium), class: "player-avatar" %>
       </div>
-      <div style="text-align: center">
+      <div class="col-md-12">
         <h3><%= current_user.name %></h3>
-        <h3>hp:<%= current_user.participation_with(@game).hp %> Mana: <%= @mana_slots %></h3>
+        <h3>hp:<%= current_user.participation_with(@game).hp %></h3>
+        <% if current_user == @player_one %>
+          <h3> mana: <%= @mana_slots %></h3></h3>
+        <% end %>
         </div>
       </div>
     <div class="row text-center col-lg-9">
@@ -31,61 +35,35 @@
             <%= image_tag @cardback.image.url(:medium) %>
           </div> 
           <div class="back">
-            <%= image_tag my_card.card.image.url(:medium) %>
+            <%= image_tag my_card.card.image.url(:medium) %> 
           </div>  
         </div>
        <% end %>
     </div>
 </div>
+<% if current_user == @player_one %>
+  <%= form_tag "/games/#{@game.id}/dealdamage", method: :get do %>
+      <%= label_tag :my_cards %>
+      <%= select_tag :my_cards, options_from_collection_for_select(@player_one.hand, :id, :cost, @player_one.hand.pluck(:id)), multiple: true %>
+        </div>
 
-<%= form_tag "/games/#{@game.id}/dealdamage", method: :get do %>
-    <%= label_tag :my_cards %>
-    <%= select_tag :my_cards, options_from_collection_for_select(@player_one.hand, :id, :name, @player_one.hand.pluck(:id)), multiple: true %>
-      </div>
-
-      <input type="submit" class="btn btn-info" value="attack">
-      <!-- want to hide this based on whether anything is selected probably a js thing. -->
-<% end %>
-    <%= form_tag "/games/#{@game.id}/endturn", method: :post do %>
-    <input type="submit" class="btn btn-info" value="end turn">
+        <input type="submit" class="btn btn-info" value="attack">
+        <!-- want to hide this based on whether anything is selected probably a js thing. -->
+  <% end %>
+      <%= form_tag "/games/#{@game.id}/endturn", method: :post do %>
+      <input type="submit" class="btn btn-info" value="end turn">
+  <% end %>
 <% end %>
 
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Launch demo
 </button>
-
-<!-- Modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="attackAnimation()">Large modal</button>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    
-        <div class="attack-card" id="attacking"> 
-        <!--   <div class="front"> 
-            <#%= image_tag @cardback.image.url(:large) %>
-          </div> --> 
-          <div class="back">
-            <%= image_tag current_user.hand.first.card.image.url(:large) %>
-          </div>  
-        </div>
-
-        <!-- <div class="opponent-avatar" style="padding: 150px 170px 0px 150px">
-          <#%= image_tag @opponent.avatar.url(:medium)%>
-            <div id="opponent-info">
-              <h3>Player Two</h3>
-              <h3>Health: 14</h3>
-            </div>
-        </div>
  -->
-    </div>
-  </div>
-</div>
-      
-
-
-
+<!-- Modal -->
+<!-- <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="attackAnimation()">Large modal</button>
+ -->
+    
 
 <script>
 $(".card").flip({
