@@ -97,6 +97,7 @@ private
 
   def set_attack_stats
     @game = Game.find(params[:id])
+    @opponent = @game.users.where.not(id: current_user.id).first
     @player_one = @game.active_player
     @player_two = @game.inactive_player
     @player_one_participation = @player_one.participation_with(@game)

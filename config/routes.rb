@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # # Serve websocket cable requests in-process
+  # mount ActionCable.server => '/games'
+  # #idk if i need these resource routes but remains to be seen
+  # #resources :chatrooms, param: :slug
+  # #resources :messages
+
   get '/' => 'users#index'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
