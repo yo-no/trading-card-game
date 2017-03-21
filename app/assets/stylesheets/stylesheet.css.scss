@@ -18,6 +18,8 @@
     body {
     background: linear-gradient(223deg, #0042ff, #9267a4, #000000, #ffffff);
     background-size: 800% 800%;
+    color: white;
+    font-family: 'Bungee', monospace; 
 
     -webkit-animation: AnimationName 34s ease infinite;
     -moz-animation: AnimationName 34s ease infinite;
@@ -39,7 +41,6 @@
         100%{background-position:0% 50%}
     }
 }
-
 
 .card {
   float: left;
@@ -76,8 +77,15 @@
   float: right;
 }
 .player-avatar {
-  border-radius: 5px;
+
   padding: 20px 10px 25px 5px;
   float: left;
+}
+
+.avatar {
+  border-radius: 50%
+}
+.player > .col-md-3{
+  border-radius: 5px;
 }
 

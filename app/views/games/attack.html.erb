@@ -4,10 +4,10 @@
     </div>
     <div class="col-md-3">
       <div class="opponent-avatar ">
-        <%= image_tag @opponent.avatar.url(:medium) %>
+        <%= image_tag @opponent.avatar.url(:medium), class: "avatar" %>
 
         <h3><%= @opponent.name %></h3>
-        <h3>health: <%= @opponent.participation_with(@game).hp %></h3>
+        <h3><span class="glyphicon glyphicon-heart"></span> <%= @opponent.participation_with(@game).hp %></h3>
       </div>
     </div>
 </div>
@@ -17,13 +17,11 @@
 <div class="container player">
       <div class="col-md-3">
       <div>
-      <%= image_tag current_user.avatar.url(:medium), class: "player-avatar" %>
+      <%= image_tag current_user.avatar.url(:medium), class: "avatar" %>
       </div>
       <div class="col-md-12">
         <h3><%= current_user.name %></h3>
-        <h3>hp:<%= current_user.participation_with(@game).hp %></h3>
-        <% if current_user == @player_one %>
-          <h3> mana: <%= @mana_slots %></h3></h3>
+        <h3><span class="glyphicon glyphicon-heart"></span> <%= current_user.participation_with(@game).hp %><% if current_user == @player_one %> <span class="glyphicon glyphicon-flash"></span> <%= @mana_slots %></h3>
         <% end %>
         </div>
       </div>
@@ -63,6 +61,29 @@
 <!-- Modal -->
 <!-- <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="attackAnimation()">Large modal</button>
  -->
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <h1 style="color: red">yr gettin attacked, vro...</h1>
+        
+      
+        <%= image_tag @player_one.hand.first.card.image.url(:large) %>
+         
+
+        <div class="opponent-avatar" style="padding: 150px 170px 0px 150px">
+          <%= image_tag @player_two.avatar.url(:medium)%>
+            <div id="opponent-info">
+              <h3>Player Two</h3>
+              <h3>Health: 14</h3>
+            </div>
+        </div>
+
+        <%= link_to "continue", "#", class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
     
 
 <script>

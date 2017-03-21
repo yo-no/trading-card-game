@@ -68,7 +68,7 @@ class GamesController < ApplicationController
         my_card.discard
       end
       redirect_to "/games/#{@game.id}/attack"
-      #flash[:default] = @my_card.card.action_text
+      # flash[:default] = @my_card.card.action_text
     else
       flash[:warning] = "insufficient mana"
       render :attack
@@ -84,8 +84,9 @@ class GamesController < ApplicationController
       @game.restore_mana_slots
       @player_one.draw_card
       @player_one_participation.increase_mana
-      ActionCable.server.broadcast 'game_channel', action: "refresh"
-      #redirect_to "/games/#{@game.id}/attack"
+      
+      ActionCable.server.broadcast 'game_channel', action: "end_turn"
+      
     end
 
   end

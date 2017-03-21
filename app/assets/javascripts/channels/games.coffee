@@ -6,6 +6,10 @@ App.room = App.cable.subscriptions.create "GamesChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+    switch data.action
+      when "end_turn"
+        $('#myModal').modal('show'); 
+
     
   
     
