@@ -1,7 +1,21 @@
-<h1>your profile</h1>
 
-<h2><%= @user.name %></h2>
-<h3>randomly generated text biography.</h3>
+<div class="row">
+  <div class="col-md-3 col-offset-1">
+    <%= image_tag @user.avatar.url(:medium), class: "avatar" %>
+  </div>
+  <div class="col-md-8">
+    <h2><%= @user.name %></h2>
+    <h3>randomly generated text biography.</h3>
+  </div>
+</div>
 
-<a class="btn btn-default" href="/mycards/">Your Cards</a>
-<a class="btn btn-default" href="/games/new">Play Game</a>
+<div class="row">
+  <div class="col-md-3 col-offset-3">
+    <div>
+      <a class="btn btn-default" href="/mycards/">Your Cards</a>
+    </div>
+    <div>
+      <a class="btn btn-default" href="/games/new">Play Game</a>
+    </div>
+  </div>
+</div>

@@ -3,15 +3,27 @@
 
     <% @my_cards.each do |card| %>
 
-      <div class="col-sm-4">
-        <div>
-          <h2><%= card.name %></h2>
-          <p>these will all just be images with hover info</p>
-          <h4>cost: <%= card.cost %> attack: <%= card.attack %> </h4>
-          
+      <div class="card"> 
+          <div class="front"> 
+            <%= image_tag @cardback.image.url(:medium) %>
+          </div> 
+          <div class="back">
+            <%= image_tag card.image.url(:medium) %> 
+          </div>  
         </div>
-      </div>
     <% end %>
+
+
 
   </div>
  </section>
+
+
+ <script>
+  
+  $(".card").flip({
+    axis: 'y',
+    trigger: 'hover'
+  });
+
+ </script>

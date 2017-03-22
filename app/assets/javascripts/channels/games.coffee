@@ -7,8 +7,12 @@ App.room = App.cable.subscriptions.create "GamesChannel",
 
   received: (data) ->
     switch data.action
+      when "attack"
+        $("#attackModal#{data.card_id}").modal('show'); 
       when "end_turn"
-        $('#myModal').modal('show'); 
+        $('#endModal').modal('show');
+
+        
 
     
   

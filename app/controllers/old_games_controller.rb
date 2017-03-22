@@ -65,31 +65,27 @@ class GamesController < ApplicationController
       @game.spend_mana(mana_cost)
       my_card_ids.each do |my_card_id|
         my_card = MyCard.find(my_card_id)
+        ActionCable.server.broadcast 'game_channel', action: "attack", card_id: my_card.card.id
         my_card.discard
       end
       #redirect_to "/games/#{@game.id}/attack"
-      my_card_ids.each do |my_card_id|
-        my_card = MyCard.find(my_card_id)
-        #ActionCable.server.broadcast 'game_channel', action: "attack", card_id: my_card.card.id
-      end
       # flash[:default] = @my_card.card.action_text
     else
       flash[:warning] = "insufficient mana"
       render :attack
-    end 
+    end      
   end
 
 
   def end_turn
     if @player_two_hp <= 0
-      ActionCable.server.broadcast 'game_channel', action: "game_over"
       redirect_to "/games/#{@game.id}/victory"
     else
       @game.switch_players
       @game.restore_mana_slots
       @player_one.draw_card
       @player_one_participation.increase_mana
-
+      
       ActionCable.server.broadcast 'game_channel', action: "end_turn"
       
     end

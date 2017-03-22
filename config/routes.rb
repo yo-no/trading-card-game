@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/games/' => 'games#create'
 
   get '/games/:id/attack/' => 'games#attack'
-  get '/games/:id/dealdamage' => 'games#deal_damage'
+  post '/games/:id/dealdamage' => 'games#deal_damage'
   post '/games/:id/endturn' => 'games#end_turn'
   get '/games/:id/victory' => 'games#victory'
 

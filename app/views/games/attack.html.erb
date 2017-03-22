@@ -40,7 +40,7 @@
     </div>
 </div>
 <% if current_user == @player_one %>
-  <%= form_tag "/games/#{@game.id}/dealdamage", method: :get do %>
+  <%= form_tag "/games/#{@game.id}/dealdamage", method: :post do %>
       <%= label_tag :my_cards %>
       <%= select_tag :my_cards, options_from_collection_for_select(@player_one.hand, :id, :cost, @player_one.hand.pluck(:id)), multiple: true %>
         </div>
@@ -63,27 +63,37 @@
  -->
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" id="myModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <h1 style="color: red">yr gettin attacked, vro...</h1>
-        
-      
-        <%= image_tag @player_one.hand.first.card.image.url(:large) %>
-         
+<% @player_one.hand.each do |my_card| %>
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" id="attackModal<%= my_card.card.id %>">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
-        <div class="opponent-avatar" style="padding: 150px 170px 0px 150px">
-          <%= image_tag @player_two.avatar.url(:medium)%>
-            <div id="opponent-info">
-              <h3>Player Two</h3>
-              <h3>Health: 14</h3>
-            </div>
-        </div>
+          <%= image_tag my_card.card.image.url(:large) %>
+           
 
-        <%= link_to "continue", "#", class: "btn btn-default" %>
+          <div class="opponent-avatar" style="padding: 150px 170px 0px 150px">
+            <%= image_tag @player_two.avatar.url(:medium)%>
+              <div id="opponent-info">
+                <h3>Player Two</h3>
+                <h3><span class="glyphicon glyphicon-heart" style="color: red"><div id="opponent-hp" style="color: red">-<%= my_card.card.attack %></div></span></h3>
+              </div>
+          </div>
+
+          <%= link_to "continue", "http://localhost:3000/games/#{@game.id}/attack", class: "btn btn-default" %>
+      </div>
     </div>
   </div>
-</div>
+
+<% end %>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" id="endModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <h1 style="color: red"><%= @player_two.name %>'s turn</h1>
+          <%= link_to "continue", "", class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
     
 
 <script>
