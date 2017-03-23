@@ -3,7 +3,7 @@
       <%= image_tag("opponenthand.gif")%>
     </div>
     <div class="col-md-3">
-      <div class="opponent-avatar ">
+      <div class="opponent-avatar">
         <%= image_tag @opponent.avatar.url(:medium), class: "avatar" %>
 
         <h3><%= @opponent.name %></h3>
@@ -79,7 +79,7 @@
               </div>
           </div>
 
-          <%= link_to "continue", "http://localhost:3000/games/#{@game.id}/attack", class: "btn btn-default" %>
+          <button class="btn btn-default" onclick="hide"></button>
       </div>
     </div>
   </div>

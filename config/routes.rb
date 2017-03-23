@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post '/games/:id/dealdamage' => 'games#deal_damage'
   post '/games/:id/endturn' => 'games#end_turn'
   get '/games/:id/victory' => 'games#victory'
+  get '/game' => 'games#game'
 
   # get "/cards/" => "cards#index"
   get "/cards/new" => "cards#new"

@@ -7,6 +7,10 @@ class GamesController < ApplicationController
     @current_user = current_user
   end
 
+  def game
+    
+  end
+
   def new
 
   end
@@ -70,7 +74,7 @@ class GamesController < ApplicationController
       #redirect_to "/games/#{@game.id}/attack"
       my_card_ids.each do |my_card_id|
         my_card = MyCard.find(my_card_id)
-        #ActionCable.server.broadcast 'game_channel', action: "attack", card_id: my_card.card.id
+        ActionCable.server.broadcast 'game_channel', action: "attack", card_id: my_card.card.id
       end
       # flash[:default] = @my_card.card.action_text
     else
@@ -91,7 +95,7 @@ class GamesController < ApplicationController
       @player_one_participation.increase_mana
 
       ActionCable.server.broadcast 'game_channel', action: "end_turn"
-      
+
     end
 
   end

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Kata "Trading Card Game"</title>
+</head>
+<body>
+
+<script>
+    var player1 = "jack";
+    var player2 = "jill";
+
+    var game = new Game(new Player(player1), new Player(player2));
+    game.init();
+</script>
+<div class="container">
+    <div class="row text-center col-lg-9">
+      <%= image_tag("opponenthand.gif")%>
+    </div>
+    <div class="col-md-3">
+      <div class="opponent-avatar">
+        here is where the opponents picture goes
+
+        <h3 id="player-two-name"></h3>
+        <h3 id="player-two-hp"><span class="glyphicon glyphicon-heart"></span></h3>
+      </div>
+    </div>
+</div>
+<div class="col-sm-12">
+  <br>
+</div>
+<div class="container player">
+      <div class="col-md-3">
+      <div>
+        here is where the active users picture goes
+      </div>
+      <div class="col-md-12">
+        <h3 id="player-one-name"></h3>
+        <h3 id="player-one-hp"><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-flash"></span> <%= @mana_slots %></h3>
+        </div>
+      </div>
+    <div class="row text-center col-lg-9" id="player-one-hand">
+
+      
+    </div>
+</div>
+
+
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Launch demo
+</button>
+ -->
+<!-- Modal -->
+<!-- <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="attackAnimation()">Large modal</button>
+ -->
+
+<!-- Modal -->
+
+<script>
+$(".card").flip({
+  axis: 'y',
+  trigger: 'click'
+});
+
+function pulse() {
+  $(".attack-card").addClass('animated tada');
+};
+
+function shake() {
+  $(".opponent-avatar").addClass('animated shake').one('webkitAnimationEnd', function() {
+    $(".opponent-avatar").removeClass('animated shake');
+  });
+};
+
+function red(){ 
+  //i think here is where i'd add the damage thing and also change the numbers maybe
+  document.getElementById("opponent-info").style.color = "red";
+};
+
+
+function discard() {
+  $(".attack-card").addClass('animated fadeOutLeft');
+};
+
+//an if function to check if there's another card attacking if not end turn basically
+function hideModal() {
+  $('#myModal').modal('hide');
+};
+
+
+function attackAnimation() {
+setTimeout(pulse, 2000);
+setTimeout(shake, 3000);
+setTimeout(red, 3000);
+//setTimeout(discard, 4000);
+setTimeout(hideModal, 6000);
+};
+
+
+</script>
+</body>
+</html>
