@@ -14,9 +14,49 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.flip
-//= require turbolinks
+//= require angular
+//= require app
 //= require_tree .
 //= require_tree ./channels
+
+$(".card").flip({
+  axis: 'y',
+  trigger: 'click'
+});
+
+function pulse() {
+  $(".attack-card").addClass('animated tada');
+};
+
+function shake() {
+  $(".opponent-avatar").addClass('animated shake').one('webkitAnimationEnd', function() {
+    $(".opponent-avatar").removeClass('animated shake');
+  });
+};
+
+function red(){ 
+  //i think here is where i'd add the damage thing and also change the numbers maybe
+  document.getElementById("opponent-info").style.color = "red";
+};
+
+
+function discard() {
+  $(".attack-card").addClass('animated fadeOutLeft');
+};
+
+//an if function to check if there's another card attacking if not end turn basically
+function hideModal() {
+  $('#myModal').modal('hide');
+};
+
+
+function attackAnimation() {
+setTimeout(pulse, 2000);
+setTimeout(shake, 3000);
+setTimeout(red, 3000);
+//setTimeout(discard, 4000);
+setTimeout(hideModal, 6000);
+};
 
 
 

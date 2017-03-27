@@ -1,33 +1,30 @@
+// function Game(player1, player2) {
+//     this.activePlayer = Math.random() >= 0.5 ? player1 : player2;
+//     this.opponentPlayer = this.activePlayer === player1 ? player2 : player1;
+//     //NEED SOME WAY OF HIGHLIGHTING ACTIVE PLAYER
+//     this.winner = undefined;
 
-function Game(player1, player2) {
-    this.activePlayer = Math.random() >= 0.5 ? player1 : player2;
-    this.opponentPlayer = this.activePlayer === player1 ? player2 : player1;
-    this.winner = undefined;
+//     for (var i = 0; i < 3; i++) {
+//         this.activePlayer.drawCard();
+//         this.opponentPlayer.drawCard();
+//     }
+//     this.opponentPlayer.drawCard(); // extra card to compensate for not playing first turn
+// }
 
-    for (var i = 0; i < 3; i++) {
-        this.activePlayer.drawCard();
-        this.opponentPlayer.drawCard();
-    }
-    this.opponentPlayer.drawCard(); // extra card to compensate for not playing first turn
-}
+// Game.prototype = {
+//     start: function () {
+//         while (this.winner === undefined) {
+//             this.beginTurn();
+//             this.playTurn();
+//             this.endTurn();
+//         }
+//     },
 
-Game.prototype = {
-    init: function() {
-      $("#player-one-name").append("plz kill me");
-    },
-    start: function () {
-        while (this.winner === undefined) {
-            this.beginTurn();
-            this.playTurn();
-            this.endTurn();
-        }
-    },
-
-    beginTurn: function () {
-        this.activePlayer.manaSlots = Math.min(this.activePlayer.manaSlots + 1, 10);
-        this.activePlayer.mana = this.activePlayer.manaSlots;
-        this.activePlayer.drawCard();
-    },
+//     beginTurn: function () {
+//         this.activePlayer.manaSlots = Math.min(this.activePlayer.manaSlots + 1, 10);
+//         this.activePlayer.mana = this.activePlayer.manaSlots;
+//         this.activePlayer.drawCard();
+//     },
 
     playTurn: function () {
         while (hasEnoughManaForCardInHand.call(this)) {
@@ -58,26 +55,26 @@ Game.prototype = {
             }
         }
 
-        function hasEnoughManaForCardInHand() {
-            return this.activePlayer.mana >= Math.min.apply(Math, this.activePlayer.hand);
-        }
+//         function hasEnoughManaForCardInHand() {
+//             return this.activePlayer.mana >= Math.min.apply(Math, this.activePlayer.hand);
+//         }
 
-    },
+//     },
 
-    endTurn: function () {
-        if (this.opponentPlayer.health <= 0) {
-            this.winner = this.activePlayer;
-            window.confirm(this.winner.name + " wins!");
-        } else {
-            switchPlayers.call(this);
-        }
+//     endTurn: function () {
+//         if (this.opponentPlayer.health <= 0) {
+//             this.winner = this.activePlayer;
+//             window.confirm(this.winner.name + " wins!");
+//         } else {
+//             switchPlayers.call(this);
+//         }
 
-        function switchPlayers() { // ECMA6: [activePlayer, opponentPlayer] = [opponentPlayer, activePlayer]
-            var tmp = this.activePlayer;
-            this.activePlayer = this.opponentPlayer;
-            this.opponentPlayer = tmp;
-        }
-    }
-}
-;
+//         function switchPlayers() { // ECMA6: [activePlayer, opponentPlayer] = [opponentPlayer, activePlayer]
+//             var tmp = this.activePlayer;
+//             this.activePlayer = this.opponentPlayer;
+//             this.opponentPlayer = tmp;
+//         }
+//     }
+// }
+// ;
 

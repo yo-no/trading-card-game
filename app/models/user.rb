@@ -44,6 +44,15 @@ class User < ApplicationRecord
     game_participations.mana_slots
   end
 
+  def medium_avatar_url
+        avatar.url(:medium)
+  end
+
+  def large_avatar_url
+        avatar.url(:large)
+   end
+
+
  private
 
 # Use strong_parameters for attribute whitelisting
