@@ -9,9 +9,10 @@
       <div class="opponent-avatar">
 
         <img class="avatar" src="{{ game.opponentPlayer.avatar }}" ng-class="{glow: false}">
-
-        <h3 id="player-two-name" ng-class="{glowfont: false}">{{ game.opponentPlayer.name }}</h3>
-        <h3 id="player-two-hp" ng-class="{glowfont: false}"><span class="glyphicon glyphicon-heart"></span> {{ game.opponentPlayer.health }}</h3>
+        <div class="col-md-12">
+          <h2 id="player-two-name" ng-class="{glowfont: false}">{{ game.opponentPlayer.name }}</h2>
+          <h2 id="player-two-hp" ng-class="{glowfont: false}"><span class="glyphicon glyphicon-heart"></span> {{ game.opponentPlayer.health }}</h2>
+        </div>
       </div>
     </div>
 </div>
@@ -26,8 +27,8 @@
           <img class="avatar" src="{{ game.activePlayer.avatar }}" alt="Img 2567" ng-class="{glow: true}">
         </div>
         <div class="col-md-12">
-          <h3 ng-class="{glowfont: true}">{{ game.activePlayer.name }}</h3>
-          <h3 id="player-one-stats" ng-class="{glowfont: true}"><span class="glyphicon glyphicon-heart"></span> {{ game.activePlayer.health }} <span class="glyphicon glyphicon-flash"></span> {{ game.activePlayer.mana }}</h3>
+          <h2 ng-class="{glowfont: true}">{{ game.activePlayer.name }}</h2>
+          <h2 id="player-one-stats" ng-class="{glowfont: true}"><span class="glyphicon glyphicon-heart"></span> {{ game.activePlayer.health }} <span class="glyphicon glyphicon-flash"></span> {{ game.activePlayer.mana }}</h2>
         </div>
       </div>
     <div class="row text-center col-lg-9" id="player-one-hand" ng-class="{glow: true}">
@@ -39,7 +40,7 @@
       </div>
 
       <div class="card" ng-click="game.endTurn()">
-        <h1 class="glowfont">endTurn</h1>
+        <h1 class="glowfont">end<br>turn</h1>
       </div>
 
     </div>
@@ -47,5 +48,33 @@
     <div class="col-sm-12">
       <br>
     </div>
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="attackModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="row">
+            <div class="col-md-12" style="text-align: center">
+              <h2>{{ attackCard.action_text }}</h2>
+            </div>
+          </div>
+
+          <img src="{{ attackCard.large_image_url }}" style="padding: 10px 10px 10px 10px" class="attack-card">
+           
+
+          <div class="opponent-avatar" style="padding: 100px 100px 0px 100px">
+            <img class="avatar" src="{{ game.opponentPlayer.avatar }}" ng-class="{glow: false}">
+            <div id="opponent-info">
+            <h2 id="player-two-name">{{ game.opponentPlayer.name }}
+            <span class="glyphicon glyphicon-heart"></span> - {{ attackCard.attack }}</h2>
+            </div>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
 
 

@@ -34,17 +34,16 @@
       },
 
       playCard: function (card, target) {
-          var player1Stats = document.getElementById("player-one-stats");
-          var player2Health = document.getElementById("player-two-hp");
           this.mana -= card.cost;
           this.hand.splice(this.hand.indexOf(card), 1);
-          //if (target === this) { // healing
-           //   target.health = Math.min(target.health += card.attack, 30); // healing caps at the initial value of 30
-          //} else { // attacking
+          $scope.attackCard = card;
+          
               //THIS IS WHERE MY ATTACK ANIMATIONs go 
+              angular.element(attackModal).modal("show");
+              attackAnimation();
               target.health -= card.attack;
               $scope.hand = this.hand;
-          //}
+
       },
 
       // toString: function () {

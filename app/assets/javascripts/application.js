@@ -35,8 +35,8 @@ function shake() {
 };
 
 function red(){ 
-  //i think here is where i'd add the damage thing and also change the numbers maybe
   document.getElementById("opponent-info").style.color = "red";
+
 };
 
 
@@ -44,18 +44,18 @@ function discard() {
   $(".attack-card").addClass('animated fadeOutLeft');
 };
 
-//an if function to check if there's another card attacking if not end turn basically
 function hideModal() {
-  $('#myModal').modal('hide');
+  $('#attackModal').modal('hide');
+  document.getElementById("opponent-info").style.color = "white";
 };
 
 
 function attackAnimation() {
-setTimeout(pulse, 2000);
-setTimeout(shake, 3000);
-setTimeout(red, 3000);
+setTimeout(pulse, 500);
+setTimeout(shake, 1000);
+setTimeout(red, 1000);
 //setTimeout(discard, 4000);
-setTimeout(hideModal, 6000);
+setTimeout(hideModal, 3000);
 };
 
 

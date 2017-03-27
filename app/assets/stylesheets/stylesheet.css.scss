@@ -1,45 +1,29 @@
-// old stuff ... body {
-//   color: white;
-//   font-family: "impact";
-//   background-image: url("http://68.media.tumblr.com/47239614b61bbb8ccff4170cbbee07ac/tumblr_nqbco8YYFL1qzbl1no1_250.gif");
-// }
 
-// .card {
-//   text-align: center;
-//   color: palegreen;
-//   height: 390px;
-//   width: 300px;
-//   background-image: url("https://68.media.tumblr.com/9ac8a5820cd05c09f5022a5bb5267f4f/tumblr_om004y1X8D1qfo5pdo1_1280.gif");
-//   background-size: 300px;
-// }
+body {
+  background: linear-gradient(223deg, #0042ff, #9267a4, #000000, #ffffff);
+  background-size: 800% 800%;
+  color: white;
+  font-family: 'Bungee', monospace; 
 
+  -webkit-animation: AnimationName 34s ease infinite;
+  -moz-animation: AnimationName 34s ease infinite;
+  animation: AnimationName 34s ease infinite;
 
-
-    body {
-    background: linear-gradient(223deg, #0042ff, #9267a4, #000000, #ffffff);
-    background-size: 800% 800%;
-    color: white;
-    font-family: 'Bungee', monospace; 
-
-    -webkit-animation: AnimationName 34s ease infinite;
-    -moz-animation: AnimationName 34s ease infinite;
-    animation: AnimationName 34s ease infinite;
-
-    @-webkit-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @-moz-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @keyframes AnimationName { 
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
+  @keyframes AnimationName { 
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+  }
 }
 
 .modal {
@@ -47,6 +31,16 @@
 }
 .modal-content{
   background: black;
+  box-shadow: 1px 1px 2px #01FE4D, 0 0 25px #01FEE5, 0 0 5px #B0FEC5;
+}
+
+body.modal-open .modal {
+    display: flex !important;
+    height: 100%;
+} 
+
+body.modal-open .modal .modal-dialog {
+    margin: auto;
 }
 
 .card {
