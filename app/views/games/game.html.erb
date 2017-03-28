@@ -3,14 +3,14 @@
 
 <div class="container">
     <div class="row text-center col-lg-9">
-      <%= image_tag("opponenthand.gif")%>
+      <img src="/assets/opponenthand.gif" class="">
     </div>
     <div class="col-md-3">
       <div class="opponent-avatar">
 
-        <img class="avatar" src="{{ game.opponentPlayer.avatar }}" ng-class="{glow: false}">
-        <div class="col-md-12">
-          <h2 id="player-two-name" ng-class="{glowfont: false}">{{ game.opponentPlayer.name }}</h2>
+        <img class="avatar purpleglow" src="{{ game.opponentPlayer.avatar }}">
+        <div class="col-md-12 purpleglowfont">
+          <h2 id="player-two-name" class="">{{ game.opponentPlayer.name }}</h2>
           <h2 id="player-two-hp" ng-class="{glowfont: false}"><span class="glyphicon glyphicon-heart"></span> {{ game.opponentPlayer.health }}</h2>
         </div>
       </div>
@@ -35,7 +35,7 @@
 
       <div class="card" ng-repeat="card in game.activePlayer.hand">
         <div class="game-card" ng-class="{glow: (card.cost <= game.activePlayer.mana), blocked: (card.cost > game.activePlayer.mana)}">
-          <img src="{{ card.medium_image_url }}" ng-click="game.activePlayer.playCard(card, game.opponentPlayer)">
+          <img src="{{ card.medium_image_url }}" ng-click="game.activePlayer.playCard(card, game.opponentPlayer)" class="hoverfx">
         </div>
       </div>
 

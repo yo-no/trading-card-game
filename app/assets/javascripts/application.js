@@ -58,6 +58,12 @@ setTimeout(red, 1000);
 setTimeout(hideModal, 3000);
 };
 
+function showRulesModal(){
+        $("#rulesModal").modal('show');
+      };
+      function hideRulesModal() {
+        $("#rulesModal" + card_id).modal('hide');
+      ;}
 
 
 

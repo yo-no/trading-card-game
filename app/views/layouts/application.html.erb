@@ -11,10 +11,9 @@
   </head>
 
   <body>
-
+  
   <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -25,11 +24,10 @@
       <a class="navbar-brand" href="/">TradingCardGame</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a onclick="showRulesModal()">about</a></li>
-        <li><a href="#">rules</a></li>
+        <li><a >about</a></li>
+        <li><a onclick="showRulesModal()">rules</a></li>
           
         
       </ul>
@@ -37,24 +35,24 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/games/">games</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= @current_user ? @current_user.name : "log in"%> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%#= @current_user ? @current_user.name : "log in"%> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <% if @current_user %>
-            <li><a href="/users/<%= @current_user.id %>/">profile</a></li>
+          <#% if @current_user %>
+            <li><a href="/users/<#%= @current_user.id %>/">profile</a></li>
             <li><a href="/mycards/">my cards</a></li>
-           <% end %> 
+           <#% end %> 
             <li role="separator" class="divider"></li>
-            <% if current_user %>
+            <#% if current_user %>
               <li><a href="/logout">log out</a></li>
-            <% else %>
+            <#% else %>
               <li><a href="/signup">sign up</a></li>
               <li><a href="/login">log in</a></li>
-            <% end %>
+            <#% end %>
           </ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
     <div class="container">
@@ -63,36 +61,29 @@
     <% end %>
     <%= yield %>
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="rulesModal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="row">
-            <div class="col-md-10 col-offset-1">
+      <div class="modal-dialog modal-lg" >
+        <div class="modal-content" style="padding: 10px 10px 10px 10px">
               <h2>Preparation</h2>
-              <ul>
-                <li>Each player starts the game with 30 Health and 0 Mana slots</li>
-                <li>Each player starts with a deck of 20 Damage cards with the following</li> 
-                <li>Mana costs: 0,0,1,1,2,2,2,3,3,3,3,4,4,4,5,5,6,6,7,8</li>
-                <li>From the deck each player receives 3 random cards has his initial hand</li>
-              </ul>
+              
+                <h5>Each player starts the game with 30 Health and 0 Mana slots</h5>
+                <h5>Each player starts with a deck of 20 Damage cards</h5> 
+        
+                <h5>From the deck each player receives 3 random cards has his initial hand</h5>
+              
                 <h2>Gameplay</h2>
-              <ul>
-                <li>The active player receives 1 Mana slot up to a maximum of 10 total slots</li>
-                <li>The active player’s empty Mana slots are refilled</li>
-                <li>The active player draws a random card from his deck</li>
-                <li>The active player can play as many cards as he can afford.</li> 
-                <li>Any played card empties Mana slots and deals immediate damage to the opponent player equal to its Mana cost.</li>
-                <li>If the opponent player’s Health drops to or below zero the active player wins the game</li>
-                <li>If the active player can’t (by either having no cards left in his hand or lacking sufficient Mana to pay for any hand card) or simply doesn’t want to play another card, the opponent player becomes active</li>
-              </ul>
-            </div>
-          </div>
+              
+                <h5>The active player receives 1 Mana slot up to a maximum of 10 total slots</h5>
+                <h5>The active player’s empty Mana slots are refilled</h5>
+                <h5>The active player draws a random card from his deck</h5>
+                <h5>The active player can play as many cards as he can afford.</h5> 
+                <h5>Any played card empties Mana slots and deals immediate damage to the opponent player.</h5>
+                <h5>If the opponent player’s Health drops to or below zero the active player wins the game</h5>
+              
         </div>
       </div>
     </div>
     <script>
-      function showRulesModal(){
-        $("#rulesModal").modal('show');
-      };
+      
       
     </script>
   </body>

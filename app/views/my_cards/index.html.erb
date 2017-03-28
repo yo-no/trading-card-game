@@ -12,8 +12,8 @@
           </div>  
         </div>
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="attackModal<%= card.id %>">
-    <div class="modal-dialog modal-lg">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="attackModal<%= card.id %>" >
+    <div class="modal-dialog modal-lg" onclick="hideModal(<%= card.id %>)">
       <div class="modal-content">
         <div class="row">
           <div class="col-md-5">
@@ -24,7 +24,6 @@
             <h3><%= card.description %></h3>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -45,6 +44,10 @@
 
   function showModal(card_id){
   $("#attackModal" + card_id).modal('show');
+  };
+
+  function hideModal(card_id){
+  $("#attackModal" + card_id).modal('hide');
   };
 
 

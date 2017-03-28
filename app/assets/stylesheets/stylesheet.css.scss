@@ -34,13 +34,32 @@ body {
   box-shadow: 1px 1px 2px #01FE4D, 0 0 25px #01FEE5, 0 0 5px #B0FEC5;
 }
 
-body.modal-open .modal {
-    display: flex !important;
-    height: 100%;
-} 
+// .modal-open .modal {
+//     display: flex !important;
+//     height: 100%;
+// } 
 
-body.modal-open .modal .modal-dialog {
-    margin: auto;
+// .modal-open .modal .modal-dialog {
+//     margin: auto;
+// }
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .card {
@@ -67,6 +86,15 @@ body.modal-open .modal .modal-dialog {
 .back {
   
 }
+
+.purpleglow {
+  box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.purpleglowfont {
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
 .player > .row {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 10px;
@@ -118,4 +146,3 @@ body.modal-open .modal .modal-dialog {
     z-index:1;
     background: transparent;
 }
-
