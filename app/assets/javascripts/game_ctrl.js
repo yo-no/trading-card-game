@@ -4,7 +4,13 @@
   angular.module("app").controller("gameCtrl", function($scope, $http){
     $scope.setup = function() {
       getData();
+
     };
+
+  function showVictoryModal() {
+    angular.element(attackModal56).modal("show");
+  };
+  
 
   function Player(player) {
       this.name = player["name"];
@@ -45,10 +51,6 @@
               $scope.hand = this.hand;
 
       },
-
-      // toString: function () {
-      //     return this.name + " (Health: " + this.health + ", Mana: " + this.mana + "/" + this.manaSlots + ")";
-      // }
   };
 
   function Game(player1, player2) {
@@ -68,7 +70,10 @@
     endTurn: function () {
         if (this.opponentPlayer.health <= 0) {
             this.winner = this.activePlayer;
-            window.confirm(this.winner.name + " wins!");
+
+            $scope.winner = this.winner;
+            angular.element(victoryModal).modal("show");
+            
         } else {
             switchPlayers.call(this);
         }
@@ -87,12 +92,9 @@
     function getData() {
       $http.get('/api/users.json').then(function(response){
         $scope.users = response.data;
-
-        var opponent = new Player(response.data[2]);
+        var opponent = new Player(response.data[4]);
         $scope.opponent = opponent;
-
-
-        var player = new Player(response.data[3]);
+        var player = new Player(response.data[5]);
         $scope.player = player;
         
         $scope.hand = player.hand;
@@ -101,6 +103,8 @@
         
       });
     }
+
+    
 
     window.scope = $scope;
   });

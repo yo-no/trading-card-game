@@ -3,8 +3,7 @@ class GamesController < ApplicationController
   before_action :set_attack_stats, only: [:attack, :deal_damage, :end_turn, :victory]
 
   def index
-    @games = current_user.games
-    @current_user = current_user
+    
   end
 
   def game

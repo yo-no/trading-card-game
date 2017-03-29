@@ -1,6 +1,6 @@
 <section>
   <div class="row">
-
+    <h1 class="glowfont" onclick="toggleFlipAll()" style="margin: auto">flip all</h1>
     <% @my_cards.each do |card| %>
 
       <div class="card" onclick="showModal(<%= card.id %>)">
@@ -12,7 +12,7 @@
           </div>  
         </div>
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="attackModal<%= card.id %>" >
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="attackModal<%= card.id %>" >
     <div class="modal-dialog modal-lg" onclick="hideModal(<%= card.id %>)">
       <div class="modal-content">
         <div class="row">
@@ -22,6 +22,7 @@
           <div class="col-md-6">
             <h1><%= card.name %></h1>
             <h3><%= card.description %></h3>
+            <h4>attack: <%= card.attack %></h4>
           </div>
         </div>
       </div>
@@ -31,16 +32,26 @@
 
 
 
+
+
   </div>
  </section>
 
 
  <script>
-  
-  $(".card").flip({
-    axis: 'y',
-    trigger: 'hover'
-  });
+  var flipped = false;
+
+  if (flipped == false) {
+    $(".card").flip({
+      axis: 'y',
+      trigger: 'hover'
+    });
+  };
+
+  function toggleFlipAll(){
+    flipped = true;
+    $(".card").flip("toggle");
+  };
 
   function showModal(card_id){
   $("#attackModal" + card_id).modal('show');
@@ -49,6 +60,8 @@
   function hideModal(card_id){
   $("#attackModal" + card_id).modal('hide');
   };
+
+
 
 
 

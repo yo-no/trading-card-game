@@ -19,10 +19,6 @@
 //= require_tree .
 //= require_tree ./channels
 
-$(".card").flip({
-  axis: 'y',
-  trigger: 'click'
-});
 
 function pulse() {
   $(".attack-card").addClass('animated tada');

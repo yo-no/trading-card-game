@@ -1,58 +1,78 @@
 <div ng-app="app">
-<div ng-controller="gameCtrl" ng-init="setup()">
+<div ng-controller="gameCtrl" ng-init="setup()" ng-cloak="">
 
-<div class="container">
-    <div class="row text-center col-lg-9">
-      <img src="/assets/opponenthand.gif" class="">
-    </div>
-    <div class="col-md-3">
-      <div class="opponent-avatar">
 
-        <img class="avatar purpleglow" src="{{ game.opponentPlayer.avatar }}">
-        <div class="col-md-12 purpleglowfont">
-          <h2 id="player-two-name" class="">{{ game.opponentPlayer.name }}</h2>
-          <h2 id="player-two-hp" ng-class="{glowfont: false}"><span class="glyphicon glyphicon-heart"></span> {{ game.opponentPlayer.health }}</h2>
-        </div>
+<!-- <div ng-hide="" class="preloader">
+   
+</div> -->
+<button ng-click="showVictoryModal()"></button>
+<div ng-show="true">
+  <div class="container">
+      <div class="row text-center col-lg-9">
+        <img src="/assets/opponenthand.gif" class="">
       </div>
-    </div>
-</div>
-
-<div class="col-sm-12">
-  <br>
-</div>
-
-<div class="container player">
       <div class="col-md-3">
-        <div>
-          <img class="avatar" src="{{ game.activePlayer.avatar }}" alt="Img 2567" ng-class="{glow: true}">
-        </div>
-        <div class="col-md-12">
-          <h2 ng-class="{glowfont: true}">{{ game.activePlayer.name }}</h2>
-          <h2 id="player-one-stats" ng-class="{glowfont: true}"><span class="glyphicon glyphicon-heart"></span> {{ game.activePlayer.health }} <span class="glyphicon glyphicon-flash"></span> {{ game.activePlayer.mana }}</h2>
-        </div>
-      </div>
-    <div class="row text-center col-lg-9" id="player-one-hand" ng-class="{glow: true}">
+        <div class="opponent-avatar">
 
-      <div class="card" ng-repeat="card in game.activePlayer.hand">
-        <div class="game-card" ng-class="{glow: (card.cost <= game.activePlayer.mana), blocked: (card.cost > game.activePlayer.mana)}">
-          <img src="{{ card.medium_image_url }}" ng-click="game.activePlayer.playCard(card, game.opponentPlayer)" class="hoverfx">
+          <img class="avatar purpleglow" src="{{ game.opponentPlayer.avatar }}">
+          <div class="col-md-12 purpleglowfont">
+            <h2 id="player-two-name" class="">{{ game.opponentPlayer.name }}</h2>
+            <h2 id="player-two-hp" ng-class="{glowfont: false}"><span class="glyphicon glyphicon-heart"></span> {{ game.opponentPlayer.health }}</h2>
+          </div>
         </div>
       </div>
+  </div>
 
-      <div class="card" ng-click="game.endTurn()">
-        <h1 class="glowfont">end<br>turn</h1>
-      </div>
+  <div class="col-sm-12">
+    <br>
+  </div>
+
+  <div class="container player">
+        <div class="col-md-3">
+          <div>
+            <img class="avatar" src="{{ game.activePlayer.avatar }}" alt="Img 2567" ng-class="{glow: true}">
+          </div>
+          <div class="col-md-12">
+            <h2 ng-class="{glowfont: true}">{{ game.activePlayer.name }}</h2>
+            <h2 id="player-one-stats" ng-class="{glowfont: true}"><span class="glyphicon glyphicon-heart"></span> {{ game.activePlayer.health }} <span class="glyphicon glyphicon-flash"></span> {{ game.activePlayer.mana }}</h2>
+          </div>
+        </div>
+      <div class="row text-center col-lg-9" id="player-one-hand" ng-class="{glow: true}">
+
+        <div class="card" ng-repeat="card in game.activePlayer.hand">
+          <div class="game-card" ng-class="{glow: (card.cost <= game.activePlayer.mana), blocked: (card.cost > game.activePlayer.mana)}">
+            <img src="{{ card.medium_image_url }}" ng-click="game.activePlayer.playCard(card, game.opponentPlayer)" class="hoverfx">
+          </div>
+        </div>
+
+        <div class="card" ng-click="game.endTurn()">
+          <h1 class="glowfont">end<br>turn</h1>
+        </div>
 
     </div>
 
-    <div class="col-sm-12">
-      <br>
-    </div>
+      <div class="col-md-12">
+        <br>
+        <br>
+      </div>
 
+    <div class="modal fade" id="victoryModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            
+            <div class="modal-body">
+              <p>winner.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary glowfont">rematch?</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="attackModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="attackModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
           <div class="row">
             <div class="col-md-12" style="text-align: center">
               <h2>{{ attackCard.action_text }}</h2>
@@ -63,15 +83,17 @@
            
 
           <div class="opponent-avatar" style="padding: 100px 100px 0px 100px">
-            <img class="avatar" src="{{ game.opponentPlayer.avatar }}" ng-class="{glow: false}">
+            <img class="avatar redglow" src="{{ game.opponentPlayer.avatar }}" >
             <div id="opponent-info">
             <h2 id="player-two-name">{{ game.opponentPlayer.name }}
             <span class="glyphicon glyphicon-heart"></span> - {{ attackCard.attack }}</h2>
             </div>
-          </div>
-          
+          </div>   
+        </div>
       </div>
-    </div>
+
+      
+
   </div>
 
   </div>

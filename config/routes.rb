@@ -35,5 +35,7 @@ Rails.application.routes.draw do
   get "/cards/new" => "cards#new"
   post "/cards" => "cards#create"
   get "cards/:id" => "cards#show"
+  get "cards/:id/edit" => "cards#edit"
+  patch "/cards/:id" => "cards#update"
 
 end

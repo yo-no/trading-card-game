@@ -33,21 +33,21 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/games/">games</a></li>
+        <li><a href="/game/">let's just play already</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%#= @current_user ? @current_user.name : "log in"%> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><% if current_user %><%= current_user.name %> <% else %>log in <% end %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <#% if @current_user %>
-            <li><a href="/users/<#%= @current_user.id %>/">profile</a></li>
+          <% if current_user %>
+            <li><a href="/users/<%= current_user.id %>/">profile</a></li>
             <li><a href="/mycards/">my cards</a></li>
-           <#% end %> 
+           <% end %> 
             <li role="separator" class="divider"></li>
-            <#% if current_user %>
+            <% if current_user %>
               <li><a href="/logout">log out</a></li>
-            <#% else %>
+            <% else %>
               <li><a href="/signup">sign up</a></li>
               <li><a href="/login">log in</a></li>
-            <#% end %>
+            <% end %>
           </ul>
         </li>
       </ul>
