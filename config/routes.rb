@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   namespace :api do 
 
-   get "/cards" => "cards#index"
+   get '/cards' => 'cards#index'
    get '/users' => 'users#index'
    get '/mycards' => 'my_cards#index'
-    
+   
   end
 
   get '/' => 'games#index'

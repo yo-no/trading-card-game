@@ -20,9 +20,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      Card.all.each do |card|
+        unless card.name == "back"
+          MyCard.create(
+                  user_id: @user.id,
+                  card_id: card.id,
+                  deck: true      
+                  )
+        end
+      end
       session[:user_id] = @user.id
       flash[:success] = 'Successfully created account!'
+
       redirect_to "/users/#{session[:user_id]}"
+      
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/signup'
