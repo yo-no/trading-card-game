@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TradingCardGame</title>
+    <title>OFF WORLD</title>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag "purp-moon.gif" %>
     <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -21,12 +22,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">TradingCardGame</a>
+      <a class="navbar-brand" href="/">off world</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a >about</a></li>
+        <li><a onclick="showAboutModal()">about</a></li>
         <li><a onclick="showRulesModal()">rules</a></li>
           
         
@@ -65,20 +66,29 @@
         <div class="modal-content" style="padding: 10px 10px 10px 10px">
               <h2>Preparation</h2>
               
-                <h5>Each player starts the game with 30 Health and 0 Mana slots</h5>
-                <h5>Each player starts with a deck of 20 Damage cards</h5> 
+                <h4>Each player starts the game with 30 Health and 0 Mana slots</h4>
+                <h4>Each player starts with a deck of 20 Damage cards</h4> 
         
-                <h5>From the deck each player receives 3 random cards has his initial hand</h5>
+                <h4>From the deck each player receives 3 random cards as his initial hand</h4>
               
                 <h2>Gameplay</h2>
               
-                <h5>The active player receives 1 Mana slot up to a maximum of 10 total slots</h5>
-                <h5>The active player’s empty Mana slots are refilled</h5>
-                <h5>The active player draws a random card from his deck</h5>
-                <h5>The active player can play as many cards as he can afford.</h5> 
-                <h5>Any played card empties Mana slots and deals immediate damage to the opponent player.</h5>
-                <h5>If the opponent player’s Health drops to or below zero the active player wins the game</h5>
+                <h4>The active player receives 1 Mana slot per turn for up to a maximum of 10 total slots</h4>
+                <h4>The active player’s empty Mana slots are refilled each turn</h4>
+                <h4>The active player draws one random card from his deck</h4>
+                <h4>The active player can play as many cards as he can afford</h4> 
+                <h4>Any played card empties Mana slots and deals immediate damage to the opponent player</h4>
+                <h4>If the opponent player’s Health drops to or below zero the active player wins the game</h4>
+
+                <h3 class="glowfont text-center">tl;dr: click the glowing stuff till someone wins</h3>
               
+        </div>
+      </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="aboutModal">
+      <div class="modal-dialog modal-lg" >
+        <div class="modal-content" style="padding: 10px 10px 10px 10px">
+            <h1>inspired by sci-fi, web1.0, and the millions of pokémon cards decaying on what's left of old earth, <span class="glowfont">off world</span> is the neon-tinged 'magic: the gathering' of the post-apocolypse.</h1> 
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     
   end
 
-  get '/' => 'users#index'
+  get '/' => 'games#index'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get '/users/:id' => 'users#show'

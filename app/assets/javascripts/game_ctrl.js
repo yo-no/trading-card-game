@@ -4,7 +4,7 @@
   angular.module("app").controller("gameCtrl", function($scope, $http){
     $scope.setup = function() {
       getData();
-
+    $scope.loaded = false;
     };
 
   function showVictoryModal() {
@@ -99,7 +99,8 @@
         
         $scope.hand = player.hand;
         
-        $scope.game = new Game(player, opponent);
+        $scope.game = new Game(player, opponent); 
+        
         
       });
     }

@@ -2,11 +2,6 @@
 <div ng-controller="gameCtrl" ng-init="setup()" ng-cloak="">
 
 
-<!-- <div ng-hide="" class="preloader">
-   
-</div> -->
-<button ng-click="showVictoryModal()"></button>
-<div ng-show="true">
   <div class="container">
       <div class="row text-center col-lg-9">
         <img src="/assets/opponenthand.gif" class="">
@@ -60,11 +55,16 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             
-            <div class="modal-body">
-              <p>winner.</p>
+            <div class="modal-body text-center">
+              <div class="row">
+                <div class="col-offset-4">
+                <img class="avatar center-block" src="{{ game.activePlayer.avatar }}" alt="Img 2567" ng-class="{glow: true}">
+                <h1>{{ winner.name }} wins!</h1>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary glowfont">rematch?</button>
+              <a href="/game" class="btn btn-default center-block">rematch?</a>
             </div>
           </div>
         </div>
@@ -92,9 +92,6 @@
         </div>
       </div>
 
-      
-
-  </div>
 
   </div>
   </div>

@@ -1,4 +1,5 @@
 json.array! @cards.each do |card|
+  json.id card.id
   json.name card.name
   json.cost card.cost
   json.attack card.attack

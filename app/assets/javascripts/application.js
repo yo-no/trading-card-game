@@ -51,15 +51,23 @@ setTimeout(pulse, 500);
 setTimeout(shake, 1000);
 setTimeout(red, 1000);
 //setTimeout(discard, 4000);
-setTimeout(hideModal, 3000);
 };
 
 function showRulesModal(){
         $("#rulesModal").modal('show');
       };
-      function hideRulesModal() {
-        $("#rulesModal" + card_id).modal('hide');
-      ;}
+
+function hideRulesModal() {
+  $("#rulesModal").modal('hide');
+;}
+
+function showAboutModal(){
+        $("#aboutModal").modal('show');
+      };
+      
+function hideAboutModal() {
+  $("#aboutModal").modal('hide');
+;}
 
 
 

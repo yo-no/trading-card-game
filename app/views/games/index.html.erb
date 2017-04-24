@@ -1,4 +1,17 @@
-<h1>your games:</h1>
-<% @games.each do |game| %>
-<h3><a href="/games/<%= game.id %>/attack">Game <%= game.id %> with <%= game.game_participations.where.not(user_id: @current_user.id).first.user.name %></a></h3>
-<% end %>
+<div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
+    <a href="/users/5"><img src="/assets/moongif-1e548134b7f845aeaecbe251efac86ebbf3b15bd119f21b3064c5cdfdefc8f3e.gif" alt="Moongif" class="avatar glow center-block"></a>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 text-center">
+    <h1 class="purpleglowfont">inspired by sci-fi, web1.0, and the millions of pokémon cards decaying on what's left of old earth, <span class="glowfont">off world</span> is the neon-tinged 'magic: the gathering' of the post-apocolypse.</h1>
+  </div>
+</div>
+    
+
