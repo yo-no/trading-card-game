@@ -1,3 +1,14 @@
+User.create!([
+  {name: "playerone", email: "playerone@email.com", password_digest: "$2a$10$yMwVK3GozVbqVDkysYR2WOAjdXQO0JXuhAuqrCgNMMrNqM8/bvXNC", bio: nil, avatar_file_name: nil, avatar_content_type: nil, avatar_file_size: nil, avatar_updated_at: nil},
+  {name: "playertwo", email: "playertwo@email.com", password_digest: "$2a$10$pnwszbR0imggML8S6ac4Leadg3s6OVFFP4FrmHrXJ672AfuvbO8WC", bio: nil, avatar_file_name: nil, avatar_content_type: nil, avatar_file_size: nil, avatar_updated_at: nil},
+  {name: "dude", email: "dude@email.com", password_digest: "$2a$10$CChy/EVVTX8gNbT5oV7gNOc6uaql.WPjkht4emECK8aSrL11oXqwq", bio: nil, avatar_file_name: "73698dbb21b19d40a58f9e6f49b15656.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 444231, avatar_updated_at: "2017-03-17 01:13:34"},
+  {name: "tuff guy", email: "tuff@email.com", password_digest: "$2a$10$3WWgYdoEq1CVRAJCPcO1bOkyCU/z3fR.2XMBaUvUG8aNSZapAKkgy", bio: nil, avatar_file_name: "IMG_2567.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 131322, avatar_updated_at: "2017-03-17 02:03:37"},
+  {name: "player2", email: "googlyeyes@email.com", password_digest: "$2a$10$yhWN6r3Qx6dWiosGHUTqaOL4j.P.1dWGKyvtn9GXy5BUTb8UN1LRW", bio: nil, avatar_file_name: "IMG_3954.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 963653, avatar_updated_at: "2017-03-29 04:13:39"},
+  {name: "dude", email: "dude@email.com", password_digest: "$2a$10$TaSJ8cA6kzbMHbtzEMPC4ufaGcY84PLGOmH5OW04pnEbF3rzH0dOC", bio: nil, avatar_file_name: "12821628_10206442162069707_6699799519415416957_n.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 155712, avatar_updated_at: "2017-04-24 01:41:39"},
+  {name: "dude 2", email: "dude2@email.com", password_digest: "$2a$10$nP3CETxAG6sBfKMzKNErUuQZlpHaW9ueq3USqVH6no6wyeQ6d5P.6", bio: nil, avatar_file_name: "artifact-from-illinois-caves.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 2153745, avatar_updated_at: "2017-04-24 01:43:54"},
+  {name: "player1", email: "player1@email.com", password_digest: "$2a$10$AWzWxta/157wF7eMqAArmuCh8Is9YXftm3FX8LGXV8Gjovnq0SYxG", bio: nil, avatar_file_name: "myavi.gif", avatar_content_type: "image/gif", avatar_file_size: 13104, avatar_updated_at: "2017-03-29 04:05:19"}
+])
+
 Card.create!([
   {name: "cybersurfer", cost: 4, attack: 4, description: "what the computer in virtual reality enables us to do is to recalibrate ourselves so that we can start seeing those pieces of information that are invisible to us but have become important for us to understand. - douglas adams", action_text: "this dude just hacked your mainframe", image_file_name: "cybersurfer.gif", image_content_type: "image/gif", image_file_size: 110295, image_updated_at: "2017-03-29 02:29:36"},
   {name: "transcendence", cost: 4, attack: 4, description: "meditation is to dive all the way within, beyond thought, to the source of thought and pure consciousness. it enlarges the container, every time you transcend. when you come out, you come out refreshed, filled with energy and enthusiasm for life. david lynch", action_text: "deconstructing consciousness", image_file_name: "transcendence.gif", image_content_type: "image/gif", image_file_size: 89651, image_updated_at: "2017-03-29 04:00:39"},
@@ -105,13 +116,4 @@ MyCard.create!([
   {user_id: 8, card_id: 54, deck: true, status: nil},
   {user_id: 8, card_id: 55, deck: true, status: nil}
 ])
-User.create!([
-  {name: "playerone", email: "playerone@email.com", password_digest: "$2a$10$yMwVK3GozVbqVDkysYR2WOAjdXQO0JXuhAuqrCgNMMrNqM8/bvXNC", bio: nil, avatar_file_name: nil, avatar_content_type: nil, avatar_file_size: nil, avatar_updated_at: nil},
-  {name: "playertwo", email: "playertwo@email.com", password_digest: "$2a$10$pnwszbR0imggML8S6ac4Leadg3s6OVFFP4FrmHrXJ672AfuvbO8WC", bio: nil, avatar_file_name: nil, avatar_content_type: nil, avatar_file_size: nil, avatar_updated_at: nil},
-  {name: "dude", email: "dude@email.com", password_digest: "$2a$10$CChy/EVVTX8gNbT5oV7gNOc6uaql.WPjkht4emECK8aSrL11oXqwq", bio: nil, avatar_file_name: "73698dbb21b19d40a58f9e6f49b15656.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 444231, avatar_updated_at: "2017-03-17 01:13:34"},
-  {name: "tuff guy", email: "tuff@email.com", password_digest: "$2a$10$3WWgYdoEq1CVRAJCPcO1bOkyCU/z3fR.2XMBaUvUG8aNSZapAKkgy", bio: nil, avatar_file_name: "IMG_2567.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 131322, avatar_updated_at: "2017-03-17 02:03:37"},
-  {name: "player2", email: "googlyeyes@email.com", password_digest: "$2a$10$yhWN6r3Qx6dWiosGHUTqaOL4j.P.1dWGKyvtn9GXy5BUTb8UN1LRW", bio: nil, avatar_file_name: "IMG_3954.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 963653, avatar_updated_at: "2017-03-29 04:13:39"},
-  {name: "dude", email: "dude@email.com", password_digest: "$2a$10$TaSJ8cA6kzbMHbtzEMPC4ufaGcY84PLGOmH5OW04pnEbF3rzH0dOC", bio: nil, avatar_file_name: "12821628_10206442162069707_6699799519415416957_n.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 155712, avatar_updated_at: "2017-04-24 01:41:39"},
-  {name: "dude 2", email: "dude2@email.com", password_digest: "$2a$10$nP3CETxAG6sBfKMzKNErUuQZlpHaW9ueq3USqVH6no6wyeQ6d5P.6", bio: nil, avatar_file_name: "artifact-from-illinois-caves.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 2153745, avatar_updated_at: "2017-04-24 01:43:54"},
-  {name: "player1", email: "player1@email.com", password_digest: "$2a$10$AWzWxta/157wF7eMqAArmuCh8Is9YXftm3FX8LGXV8Gjovnq0SYxG", bio: nil, avatar_file_name: "myavi.gif", avatar_content_type: "image/gif", avatar_file_size: 13104, avatar_updated_at: "2017-03-29 04:05:19"}
-])
+
