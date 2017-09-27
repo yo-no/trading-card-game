@@ -8,7 +8,10 @@ class User < ApplicationRecord
 
   has_many :images, as: :imageable_type
 
-  has_attached_file :avatar, styles: { large: "400x400#", big:"300x300#", medium: "200x200#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar,
+   styles: { large: "400x400#", big:"300x300#", medium: "200x200#", thumb: "100x100#" },
+   default_url: "/images/:style/missing.png",
+   s3_protocol: :https
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def initialize_deck
