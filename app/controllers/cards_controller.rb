@@ -26,7 +26,8 @@ class CardsController < ApplicationController
   end
 
   def update
-    @card = Card.update( card_params )
+    @card = Card.find(params[:id])
+    @card.update( card_params )
     redirect_to "/cards/#{@card.id}"
   end
 
