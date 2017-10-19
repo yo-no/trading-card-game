@@ -94,7 +94,7 @@
         $scope.users = response.data;
         var opponent = new Player(response.data[4]);
         $scope.opponent = opponent;
-        var player = new Player(response.data[9]);
+        var player = new Player(response.data[7]);
         $scope.player = player;
         
         $scope.hand = player.hand;
