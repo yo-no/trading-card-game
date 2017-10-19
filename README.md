@@ -1,4 +1,8 @@
 #OFF WORLD
+THIS IS A WIP!
+CHECK OUT THE DEMO:
+https://off-world.herokuapp.com/game
+
 
 inspired by sci-fi, web1.0, and the millions of pokémon cards decaying on what's left of old earth, off world is the neon-tinged 'magic: the gathering' of the post-apocolypse.
 

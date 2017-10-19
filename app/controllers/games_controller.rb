@@ -7,11 +7,7 @@ class GamesController < ApplicationController
   end
 
   def game
-    # game = Game.create(mana_slots: 1)
     @cardback = Card.find_by(name: "back")
-    # @player_one = User.find(4)
-    # @player_two = User.find(3)
-    # @opponent = User.find(3)
   end
 
   def new
