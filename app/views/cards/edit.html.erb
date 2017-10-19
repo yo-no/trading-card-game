@@ -1,0 +1,23 @@
+<%= form_for @card, html: { multipart: true } do |form| %>
+  <div>
+    <h3>image</h3> <%= form.file_field :image %>
+  </div>
+  <div>
+    <h3>name</h3> <%= form.text_field :name, @card.name %>
+  </div>
+  <div>
+    <h3>cost</h3> <%= form.text_field :cost, @card.cost %>
+  </div>
+  <div>
+    <h3>attack</h3> <%= form.text_field :attack, @card.attack %>
+  </div>
+  <div>
+    <h3>description</h3><%= form.text_field :description, @card.description %>
+  </div>
+  <div>
+    <h3>action text</h3><%= form.text_field :action_text, @card.text %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
