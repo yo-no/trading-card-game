@@ -32,10 +32,6 @@ Rails.application.routes.draw do
   get '/games/:id/victory' => 'games#victory'
   get '/game' => 'games#game'
 
-  get "/cards/new" => "cards#new"
-  post "/cards" => "cards#create"
-  get "cards/:id" => "cards#show"
-  get "cards/:id/edit" => "cards#edit"
-  patch "/cards/:id" => "cards#update"
+  resources :cards
 
 end
