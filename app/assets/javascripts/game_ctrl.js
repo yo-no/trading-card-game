@@ -92,9 +92,9 @@
     function getData() {
       $http.get('/api/users.json').then(function(response){
         $scope.users = response.data;
-        var opponent = new Player(response.data[4]);
+        var opponent = new Player(response.data[0]);
         $scope.opponent = opponent;
-        var player = new Player(response.data[7]);
+        var player = new Player(response.data[1]);
         $scope.player = player;
         
         $scope.hand = player.hand;
