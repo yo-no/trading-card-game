@@ -44,7 +44,7 @@
           this.hand.splice(this.hand.indexOf(card), 1);
           $scope.attackCard = card;
           
-              //THIS IS WHERE MY ATTACK ANIMATIONs go 
+              
               angular.element(attackModal).modal("show");
               attackAnimation();
               target.health -= card.attack;
@@ -56,7 +56,7 @@
   function Game(player1, player2) {
     this.activePlayer = Math.random() >= 0.5 ? player1 : player2;
     this.opponentPlayer = this.activePlayer === player1 ? player2 : player1;
-    //NEED SOME WAY OF HIGHLIGHTING ACTIVE PLAYER
+    
     this.winner = undefined;
 
     for (var i = 0; i < 3; i++) {
@@ -94,7 +94,7 @@
         $scope.users = response.data;
         var opponent = new Player(response.data[4]);
         $scope.opponent = opponent;
-        var player = new Player(response.data[7]);
+        var player = new Player(response.data[9]);
         $scope.player = player;
         
         $scope.hand = player.hand;
