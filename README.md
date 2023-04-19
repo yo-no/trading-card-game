@@ -1,8 +1,5 @@
 #OFF WORLD
 THIS IS A WIP!
-CHECK OUT THE DEMO:
-https://off-world.herokuapp.com/game
-
 
 inspired by sci-fi, web1.0, and the millions of pokémon cards decaying on what's left of old earth, off world is the neon-tinged 'magic: the gathering' of the post-apocolypse.
 
@@ -39,10 +36,6 @@ Any played card empties Mana slots and deals immediate damage to the opponent pl
 If the opponent player’s Health drops to or below zero the active player wins the game
 
 tl;dr: click the glowing stuff till someone wins!
-
-THE CODE!
-
-there is a ton of extra code in this project from previous attempts at running the game in rails rather than angular. please excuse my mess.
 
 gameplay based on this challenge from The Code Dojo: http://codingdojo.org/kata/TradingCardGame/
 
